@@ -8,6 +8,11 @@ var safety_iter_limit: int = 128;
 
 signal lint_warnings_generated(path: String, text: String, results: Array[RegExMatch]);
 
+func load_rules() -> void:
+	SpaghettiLogger.debug("loading default rules");
+	self.add_pasta(preload("res://addons/no_spaghetti/checker/pastas/explicit_return_type.tres"));
+	self.add_pasta(preload("res://addons/no_spaghetti/checker/pastas/no_private_access.tres"));
+
 func add_pasta(pasta: Pasta) -> void:
 	self.pastas.append(pasta);
 

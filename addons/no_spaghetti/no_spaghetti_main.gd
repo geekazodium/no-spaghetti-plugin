@@ -27,7 +27,7 @@ func _enter_tree() -> void:
 	self.main_dock.check_button.pressed.connect(self.spaghetti_checker.check_program);
 	self.spaghetti_checker.lint_warnings_generated.connect(self.main_dock.create_warning_display);
 	
-	self._load_rules();
+	self.spaghetti_checker.load_rules();
 	
 	SpaghettiLogger.debug("setting instance...");
 	self.instance = self;
@@ -43,8 +43,3 @@ func _exit_tree() -> void:
 	
 	SpaghettiLogger.debug("NoSpaghetti has been disabled");
 	self.instancce = null;
-
-func _load_rules() -> void:
-	SpaghettiLogger.debug("loading default rules");
-	self.spaghetti_checker.add_pasta(preload("res://addons/no_spaghetti/checker/pastas/explicit_return_type.tres"));
-	self.spaghetti_checker.add_pasta(preload("res://addons/no_spaghetti/checker/pastas/no_private_access.tres"));
