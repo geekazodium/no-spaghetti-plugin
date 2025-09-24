@@ -90,6 +90,7 @@ jobs:
       - name: Linux Run
         run: |
           cd $PROJECT_PATH
+          godot --import --headless
           godot run --headless --quit
 
   # export-web:
