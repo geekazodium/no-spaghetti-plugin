@@ -79,7 +79,8 @@ jobs:
           cd $PROJECT_PATH
           rm export_presets.cfg
           rm project.godot
-          
+          curl -o "project.godot" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/project.godot
+          curl -o "export_presets.cfg" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/export_presets.cfg
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
