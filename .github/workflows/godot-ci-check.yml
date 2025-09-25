@@ -51,7 +51,7 @@ jobs:
         run : |
           wget -O godot.zip https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip godot.zip
-          cp ./Godot_v4.3-stable_linux.x86_64 "{$GODOT_DL_PATH}"
+          cp ./Godot_v4.3-stable_linux.x86_64 "$GODOT_DL_PATH"
       - name: Reconfigure
         run: |
           cd $PROJECT_PATH
@@ -62,8 +62,8 @@ jobs:
         run: |
           cd $PROJECT_PATH
           echo $GODOT_DL_PATH
-          eval "{$GODOT_DL_PATH}" --args "--import --headless"
-          eval "{$GODOT_DL_PATH}" --args "run --headless --quit"
+          eval "$GODOT_DL_PATH" --args "--import --headless"
+          eval "$GODOT_DL_PATH" --args "run --headless --quit"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -72,63 +72,3 @@ jobs:
       - name: 
         run: |
           test -f "{$PROJECT_PATH}/warnings_compact.txt" && echo "rules violation found" >&2
-
-  # export-web:
-  #   name: Web Export
-  #   runs-on: ubuntu-22.04  # Use 22.04 with godot 4
-  #   container:
-  #     image: barichello/godot-ci:4.3
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #       with:
-  #         lfs: true
-  #     - name: Setup
-  #       run: |
-  #         mkdir -v -p ~/.local/share/godot/export_templates/
-  #         mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-  #     - name: Web Build
-  #       run: |
-  #         mkdir -v -p build/web
-  #         EXPORT_DIR="$(readlink -f build)"
-  #         cd $PROJECT_PATH
-  #         godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
-  #     - name: Upload Artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: web
-  #         path: build/web
-  #     - name: Install rsync 📚
-  #       run: |
-  #         apt-get update && apt-get install -y rsync
-  #     - name: Deploy to GitHub Pages 🚀
-  #       uses: JamesIves/github-pages-deploy-action@releases/v4
-  #       with:
-  #         branch: gh-pages # The branch the action should deploy to.
-  #         folder: build/web # The folder the action should deploy.
-
-  # export-mac:
-  #   name: Mac Export
-  #   runs-on: ubuntu-22.04  # Use 22.04 with godot 4
-  #   container:
-  #     image: barichello/godot-ci:4.3
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #       with:
-  #         lfs: true
-  #     - name: Setup
-  #       run: |
-  #         mkdir -v -p ~/.local/share/godot/export_templates/
-  #         mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-  #     - name: Mac Build
-  #       run: |
-  #         mkdir -v -p build/mac
-  #         EXPORT_DIR="$(readlink -f build)"
-  #         cd $PROJECT_PATH
-  #         godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME.zip"
-  #     - name: Upload Artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: mac
-  #         path: build/mac
