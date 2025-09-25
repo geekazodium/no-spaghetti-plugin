@@ -37,16 +37,12 @@ env:
 jobs:
   ns-checker-run:
     name: Run NoSpaghetti Checker
-    runs-on: ubuntu-22.04  # Use 22.04 with godot 4
-    # container:
-    #   image: barichello/godot-ci:4.3
+    runs-on: ubuntu-22.04 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           lfs: true
-      # - name: Install curl
-      #   run: sudo apt-get update && sudo apt-get install -y curl
       - name: Install Godot
         run : |
           wget -O godot.zip https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
@@ -61,14 +57,15 @@ jobs:
       - name: Linux Run
         run: |
           cd $PROJECT_PATH
-          echo $GODOT_DL_PATH
           eval "$GODOT_DL_PATH" --args "--import --headless"
           eval "$GODOT_DL_PATH" --args "run --headless --quit"
+          mkdir ./results/
+          cp "$PROJECT_PATH/warnings_compact.txt" "./results/warnings_compact.txt" 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: results-min.txt
-          path: "{$PROJECT_PATH}warnings_compact.txt"
+          path: "./results/warnings_compact.txt"
       - name: 
         run: |
-          test -f "{$PROJECT_PATH}warnings_compact.txt" && echo "rules violation found" >&2
+          test -f "./results/warnings_compact.txt" && echo "rules violation found" >&2
