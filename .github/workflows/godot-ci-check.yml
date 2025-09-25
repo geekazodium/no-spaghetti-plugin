@@ -51,7 +51,7 @@ jobs:
         run : |
           wget -O godot.zip https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip godot.zip
-          cp ./Godot_v4.3-stable_linux.x86_64 $GODOT_PATH
+          cp ./Godot_v4.3-stable_linux.x86_64 "{$GODOT_DL_PATH}"
       - name: Reconfigure
         run: |
           cd $PROJECT_PATH
@@ -61,9 +61,9 @@ jobs:
       - name: Linux Run
         run: |
           cd $PROJECT_PATH
-          echo $GODOT_PATH
-          eval "{$GODOT_PATH}" --args "--import --headless"
-          eval "{$GODOT_PATH}" --args "run --headless --quit"
+          echo $GODOT_DL_PATH
+          eval "{$GODOT_DL_PATH}" --args "--import --headless"
+          eval "{$GODOT_DL_PATH}" --args "run --headless --quit"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
