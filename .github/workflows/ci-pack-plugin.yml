@@ -40,7 +40,7 @@ jobs:
           lfs: true
       - name: Export Included Files
         run: |
-          zip ./plugin.zip ./.github/workflows/godot-ci-check.yml ./addons/
+          zip ./plugin.zip ./.github/workflows/godot-ci-check.yml -r ./addons/
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
