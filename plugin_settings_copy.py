@@ -1,6 +1,7 @@
 import os
 
 SECTION_COPY_HEADER = "[no_spaghetti]"
+TESTING_PROJ_LINK = "https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/project.godot"
 
 settings: str = ""
 with open ("project.godot", "r") as file:
@@ -15,11 +16,13 @@ with open ("project.godot", "r") as file:
             settings = settings + line
 
     file.close()
-
+print("user settings:")
 print(settings)
 
+print("removing and replacing project.godot")
 os.remove("project.godot")
-os.system("wget -O \"project.godot\" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/project.godot")
+os.system("wget -O \"project.godot\" "+ TESTING_PROJ_LINK)
 
+print("appending user settings")
 with open ("project.godot", "a") as file:
     file.writelines("\n\n" + settings + "\n\n")
