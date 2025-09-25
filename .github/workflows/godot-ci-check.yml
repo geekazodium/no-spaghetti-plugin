@@ -68,7 +68,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: results-min.txt
-          path: "$(PROJECT_PATH)/warnings_compact.txt"
+          path: "{$PROJECT_PATH}warnings_compact.txt"
       - name: 
         run: |
-          test -f "$(PROJECT_PATH)/warnings_compact.txt" && echo "rules violation found" >&2
+          test -f "{$PROJECT_PATH}warnings_compact.txt" && echo "rules violation found" >&2
