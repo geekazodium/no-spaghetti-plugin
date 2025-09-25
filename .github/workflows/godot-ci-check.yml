@@ -57,7 +57,7 @@ jobs:
           eval "$GODOT_DL_PATH" --args "--import --headless"
           eval "$GODOT_DL_PATH" --args "run --headless --quit"
           mkdir ./results/
-          cp "$PROJECT_PATH/warnings_compact.txt" "./results/warnings_compact.txt" 
+          test -f "$PROJECT_PATH/warnings_compact.txt" && cp "$PROJECT_PATH/warnings_compact.txt" "./results/warnings_compact.txt" 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
