@@ -64,7 +64,7 @@ jobs:
   #         name: windows
   #         path: build/windows
 
-  run-ns-checker:
+  export-linux:
     name: Run NoSpaghetti Checker
     runs-on: ubuntu-22.04  # Use 22.04 with godot 4
     container:
