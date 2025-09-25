@@ -66,7 +66,7 @@ jobs:
         with:
           name: results-min.txt
           path: "./results/warnings_compact.txt"
-      - name: #invoke non installed commnad curl if failed
+      - name: #invoke wget
         run: |
-          test -f "./results/warnings_compact.txt" && echo "rules violation found" && curl 
+          test -f "./results/warnings_compact.txt" && echo "rules violation found" && wget
           
