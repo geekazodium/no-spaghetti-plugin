@@ -66,6 +66,7 @@ jobs:
         with:
           name: results-min.txt
           path: "./results/warnings_compact.txt"
-      - name: 
+      - name: #invoke non installed commnad curl if failed
         run: |
-          test -f "./results/warnings_compact.txt" && echo "rules violation found" >&2
+          test -f "./results/warnings_compact.txt" && echo "rules violation found" && curl 
+          
