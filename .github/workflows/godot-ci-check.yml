@@ -90,6 +90,7 @@ jobs:
       - name: Linux Run
         run: |
           cd $PROJECT_PATH
+          echo $GODOT_PATH
           eval "{$GODOT_PATH} --import --headless"
           eval "{$GODOT_PATH} run --headless --quit"
       - name: Upload Artifact
