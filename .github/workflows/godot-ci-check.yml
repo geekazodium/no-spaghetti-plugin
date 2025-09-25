@@ -78,7 +78,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y curl
       - name: Install Godot
         run : |
-          wget -o godot.zip https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          wget -O godot.zip https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip godot.zip
           $GODOT_PATH = "~/Godot_v4.3-stable_linux.x86_64"
       - name: Reconfigure
