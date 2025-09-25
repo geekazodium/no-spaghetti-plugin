@@ -5,7 +5,8 @@ var output: FileAccess;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var ns_checker: SpaghettiChecker = SpaghettiChecker.new();
-	ns_checker.load_rules();
+	SpaghettiSettings.register_properties();
+	ns_checker.load_rules(ProjectSettings.get_setting(SpaghettiSettings.RULES_SRC));
 	ns_checker.lint_warnings_generated.connect(self.write_warning_to_file);
 	ns_checker.check_program();
 	if self.output != null:
