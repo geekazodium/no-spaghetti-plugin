@@ -57,7 +57,7 @@ jobs:
           eval "$GODOT_DL_PATH" --args "--import --headless"
           eval "$GODOT_DL_PATH" --args "run --headless --quit"
           mkdir ./results/
-          if [ -f "$PROJECT_PATH/warnings_compact.txt" ] then cp "$PROJECT_PATH/warnings_compact.txt" "./results/warnings_compact.txt" 
+          if [ -f "$PROJECT_PATH/warnings_compact.txt" ]; then cp "$PROJECT_PATH/warnings_compact.txt" "./results/warnings_compact.txt"; fi
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -65,5 +65,5 @@ jobs:
           path: "./results/warnings_compact.txt"
       - name: #invoke wget
         run: |
-          if [ -f "./results/warnings_compact.txt" ] then echo "rules violation found" && wget
+          if [ -f "./results/warnings_compact.txt" ]; then echo "rules violation found" && wget; fi
           
