@@ -62,8 +62,8 @@ jobs:
         run: |
           cd $PROJECT_PATH
           echo $GODOT_DL_PATH
-          eval "$GODOT_DL_PATH" --args "--import --headless"
-          eval "$GODOT_DL_PATH" --args "run --headless --quit"
+          "$GODOT_DL_PATH --import --headless"
+          "$GODOT_DL_PATH run --headless --quit"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
