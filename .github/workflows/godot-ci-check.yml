@@ -74,8 +74,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
-      - name: Install curl
-        run: sudo apt-get update && sudo apt-get install -y curl
+      # - name: Install curl
+      #   run: sudo apt-get update && sudo apt-get install -y curl
       - name: Install Godot
         run : |
           export GODOT_PATH="~/Godot_v4.3-stable_linux.x86_64" 
@@ -86,7 +86,7 @@ jobs:
           cd $PROJECT_PATH
           rm export_presets.cfg
           rm project.godot
-          curl -o "project.godot" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/project.godot
+          wget -O "project.godot" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/project.godot
       - name: Linux Run
         run: |
           cd $PROJECT_PATH
