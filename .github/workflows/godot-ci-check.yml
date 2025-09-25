@@ -80,7 +80,7 @@ jobs:
         run : |
           export GODOT_PATH="~/Godot_v4.3-stable_linux.x86_64" 
           wget -O godot.zip https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
-          unzip godot.zip -d $GODOT_PATH
+          unzip godot.zip -p > $GODOT_PATH
       - name: Reconfigure
         run: |
           cd $PROJECT_PATH
