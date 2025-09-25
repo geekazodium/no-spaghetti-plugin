@@ -49,8 +49,8 @@ jobs:
         run: |
           cd $PROJECT_PATH
           rm export_presets.cfg
-          rm project.godot
-          wget -O "project.godot" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/project.godot
+          wget -O "check.py" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/plugin_settings_copy.py
+          python ./check.py
       - name: Linux Run
         run: |
           cd $PROJECT_PATH
@@ -66,4 +66,5 @@ jobs:
       - name: #invoke wget
         run: |
           if [ -f "./results/warnings_compact.txt" ]; then echo "rules violation found" && wget; fi
-          
+        
+      #(\[no_spaghetti\][^]*\n)\[

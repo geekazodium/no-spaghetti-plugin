@@ -4,7 +4,10 @@ class_name NoSpaghettiPlugin
 
 static var instance: NoSpaghettiPlugin;
 
+@export var path: String = "";
+
 var main_dock: SpaghettiMenu;
+var spaghetti_settings: NoSpaghettiSettings;
 var main_dock_scene: PackedScene = preload("res://addons/no_spaghetti/menus/spaghetti_menu.tscn");
 var spaghetti_checker: SpaghettiChecker;
 
@@ -12,6 +15,10 @@ var spaghetti_checker: SpaghettiChecker;
 func _enter_tree() -> void:
 	SpaghettiLogger.debug("NoSpaghetti has been enabled");
 	SpaghettiLogger.rich("thank you for using [color=Orange]NoSpaghetti [color=White]v0.1b");
+	
+	SpaghettiLogger.debug("instantiating custom settings...");
+	self.spaghetti_settings = NoSpaghettiSettings.new();
+	self.spaghetti_settings.register_properties();
 	
 	SpaghettiLogger.debug("instantiating and adding main dock...");
 	self.main_dock = self.main_dock_scene.instantiate() as SpaghettiMenu;
