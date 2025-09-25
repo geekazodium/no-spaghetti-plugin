@@ -29,6 +29,10 @@ on:
 permissions:
   contents: read
 
+env:
+  LICENSE_PATH: "license.txt"
+  PLUGIN_PATH: "./addons/no_spaghetti/"
+
 jobs:
   pack:
     name: Package Plugin
@@ -40,6 +44,7 @@ jobs:
           lfs: true
       - name: Export Included Files
         run: |
+          cp $LICENSE_PATH "{$PLUGIN_PATH}{$LICENSE_PATH}"
           zip ./plugin.zip ./.github/workflows/godot-ci-check.yml -r ./addons/
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
