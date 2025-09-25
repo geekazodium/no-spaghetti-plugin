@@ -16,13 +16,14 @@ with open ("project.godot", "r") as file:
             settings = settings + line
 
     file.close()
-print("user settings:")
-print(settings)
+    
+    print("user settings:")
+    print(settings)
 
-print("removing and replacing project.godot")
-os.remove("project.godot")
-os.system("wget -O \"project.godot\" "+ TESTING_PROJ_LINK)
+    print("removing and replacing project.godot")
+    os.remove("project.godot")
+    os.system("wget -O \"project.godot\" "+ TESTING_PROJ_LINK)
 
-print("appending user settings")
-with open ("project.godot", "a") as file:
-    file.writelines("\n\n" + settings + "\n\n")
+    print("appending user settings")
+    with open ("project.godot", "a") as file:
+        file.writelines("\n\n" + settings + "\n\n")
