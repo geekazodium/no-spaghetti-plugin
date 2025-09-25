@@ -78,9 +78,9 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y curl
       - name: Install Godot
         run : |
+          export GODOT_PATH="~/Godot_v4.3-stable_linux.x86_64" 
           wget -O godot.zip https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
-          unzip godot.zip
-          set $GODOT_PATH "~/Godot_v4.3-stable_linux.x86_64"
+          unzip godot.zip -d $GODOT_PATH
       - name: Reconfigure
         run: |
           cd $PROJECT_PATH
@@ -90,8 +90,8 @@ jobs:
       - name: Linux Run
         run: |
           cd $PROJECT_PATH
-          eval $GODOT_PATH --import --headless
-          eval $GODOT_PATH run --headless --quit
+          $(GODOT_PATH) --import --headless
+          $(GODOT_PATH) run --headless --quit
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
