@@ -49,7 +49,7 @@ jobs:
         run: |
           cd $PROJECT_PATH
           rm export_presets.cfg
-          wget -O "check.py" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/plugin_settings_copy.py
+          wget -O "check.py" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/ci_dependencies/plugin_settings_copy.py
           python ./check.py
       - name: Linux Run
         run: |

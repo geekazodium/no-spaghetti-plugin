@@ -1,7 +1,7 @@
 import os
 
 SECTION_COPY_HEADER = "[no_spaghetti]"
-TESTING_PROJ_LINK = "https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/project.godot"
+TESTING_PROJ_LINK = "https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/ci_dependencies/project.godot"
 
 settings: str = ""
 with open ("project.godot", "r") as file:
