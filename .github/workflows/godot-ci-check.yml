@@ -32,7 +32,7 @@ permissions:
 
 env:
   PROJECT_PATH: ./
-  GODOT_DL_PATH: "~/Godot.x86_64"
+  GODOT_DL_PATH: "./Godot.x86_64"
 
 jobs:
   ns-checker-run:
