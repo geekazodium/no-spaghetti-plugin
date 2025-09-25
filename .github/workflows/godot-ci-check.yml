@@ -48,7 +48,7 @@ jobs:
       - name: Reconfigure
         run: |
           cd $PROJECT_PATH
-          rm export_presets.cfg
+          if [ -f "export_presets.cfg" ]; then rm export_presets.cfg; fi
           wget -O "check.py" https://raw.githubusercontent.com/geekazodium/no-spaghetti-plugin/refs/heads/main/ci_dependencies/plugin_settings_copy.py
           python ./check.py
       - name: Linux Run
