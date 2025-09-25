@@ -14,7 +14,7 @@ static var settings: Array[Dictionary] = [
 		"description": "This is the directory where no_spaghetti will read the ignored file list"
 	},
 	{
-		"default": ["addons/"],
+		"default": ["res://addons/"],
 		"name": IGNORED_STRINGS,
 		"type": TYPE_ARRAY,
 		"hint": PROPERTY_HINT_ARRAY_TYPE,

@@ -21,7 +21,7 @@ enabled=PackedStringArray("res://addons/no_spaghetti/plugin.cfg")
 
 [no_spaghetti]
 
-ignores=["addons/", "uwu", "owos"]
+ignores=["res://addons/", "res://example_scripts/"]
 
 [rendering]
 
