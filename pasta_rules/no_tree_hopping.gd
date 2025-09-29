@@ -14,12 +14,13 @@ extends Pasta
 ## or more, and adds it to the list
 ## alternatively, if you backreference, that immediately is also counted
 
-var compiled: RegEx = RegEx.create_from_string("\\$\"([^\"]+)\"");
-var compiled_no_quote: RegEx = RegEx.create_from_string("\\$([^\\.\\:\"\\%]+)[\\.\n\\\\]");
+var compiled: RegEx;
+var compiled_no_quote: RegEx;
 var max_allowed_depth: int = 2;
 
 func compile_rules() -> void:
-	pass
+    self.compiled = RegEx.create_from_string("\\$\"([^\"]+)\"");
+    self.compiled_no_quote = RegEx.create_from_string("\\$([^\\.\\:\"\\%]+)[\\.\n\\\\]");
 	
 func search_all(text: String, array: Array[RegExMatch]) -> void:
 	for m: RegExMatch in self.compiled.search_all(text):

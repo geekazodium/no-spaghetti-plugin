@@ -3,10 +3,11 @@ extends Pasta
 
 # MIT License (c) 2025 geekazodium
 
-var compiled: RegEx = RegEx.create_from_string("([_a-zA-Z0-9]+)[ \n\t]*\\.[ \n\t]*_.+");
+var compiled: RegEx;
 var exception: RuleException;
 
 func compile_rules() -> void:
+	self.compiled = RegEx.create_from_string("([_a-zA-Z0-9]+)[ \n\t]*\\.[ \n\t]*_.+");
 	if self.exception == null:
 		self.exception = RuleException.new();
 		self.exception.rule = "^_?self$";

@@ -3,10 +3,10 @@ extends Pasta
 
 # MIT License (c) 2025 geekazodium
 
-var compiled: RegEx = RegEx.create_from_string("func[ \t]+[a-zA-Z0-9_]+\\(.*\\)[\t ]*:");
+var compiled: RegEx;
 
 func compile_rules() -> void: 
-	pass;
+	self.compiled = RegEx.create_from_string("func[ \t]+[a-zA-Z0-9_]+\\(.*\\)[\t ]*:");
 
 func search_all(text: String, array: Array[RegExMatch]) -> void:
 	for m: RegExMatch in self.compiled.search_all(text):
