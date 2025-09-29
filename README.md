@@ -7,7 +7,7 @@ the tree in scripts.
 ## Version Support
 
 plugin: 4.3+ 
-ci-workflow: 4.3 only.
+ci-workflow: 4.3+
 
 ## Getting Started
 
