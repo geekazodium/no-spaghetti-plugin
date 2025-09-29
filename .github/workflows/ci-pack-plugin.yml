@@ -32,6 +32,7 @@ permissions:
 env:
   LICENSE_PATH: "license.txt"
   PLUGIN_PATH: "./addons/no_spaghetti/"
+  TMP_EXPORT_PATH: "./plugin"
 
 jobs:
   pack:
@@ -44,11 +45,14 @@ jobs:
           lfs: true
       - name: Export Included Files
         run: |
+          if [ -f $TMP_EXPORT_PATH ]; then rm $TMP_EXPORT_PATH; fi
           cp $LICENSE_PATH "$PLUGIN_PATH$LICENSE_PATH"
-          zip ./plugin.zip ./.github/workflows/godot-ci-check.yml -r ./addons/ ./pasta_rules/ 
+          mkdir -p $TMP_EXPORT_PATH/.github/workflows/
+          mv ./.github/workflows/godot-ci-check.yml $TMP_EXPORT_PATH/.github/workflows/
+          mv ./addons/ ./pasta_rules/ $TMP_EXPORT_PATH/
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: plugin.zip
-          path: "./plugin.zip"
+          path: "./plugin/"
           
