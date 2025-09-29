@@ -1,6 +1,8 @@
 @tool
 extends Pasta
 
+# MIT License (c) 2025 geekazodium
+
 var compiled: RegEx = RegEx.create_from_string("([_a-zA-Z0-9]+)[ \n\t]*\\.[ \n\t]*_.+");
 var exception: RuleException;
 

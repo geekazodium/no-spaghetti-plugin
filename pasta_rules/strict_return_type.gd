@@ -1,6 +1,8 @@
 @tool
 extends Pasta
 
+# MIT License (c) 2025 geekazodium
+
 var compiled: RegEx = RegEx.create_from_string("func[ \t]+[a-zA-Z0-9_]+\\(.*\\)[\t ]*:");
 
 func compile_rules() -> void: 
