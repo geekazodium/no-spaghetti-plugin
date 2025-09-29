@@ -28,7 +28,7 @@ permissions:
   contents: read
 
 env:
-  GODOT_VERSION: 4.3-stable
+  GODOT_VERSION: 4.5-stable
   PROJECT_PATH: ./
   GODOT_DL_PATH: "./Godot.x86_64"
 
