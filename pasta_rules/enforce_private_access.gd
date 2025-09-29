@@ -14,7 +14,7 @@ func compile_rules() -> void:
 		self.exception.group = 1;
 	self.exception.compile_rules();
 	
-func search_all(text: String, array: Array[RegExMatch]) -> void:
+func search_all(text: String, file_name: String, array: Array[RegExMatch]) -> void:
 	for m: RegExMatch in self.compiled.search_all(text):
 		if self.exception.is_exempt(m):
 			continue;

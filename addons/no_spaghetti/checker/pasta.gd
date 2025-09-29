@@ -15,11 +15,17 @@ class_name Pasta
 #extends Pasta
 #
 #func is_covered(file_name: String) -> bool:
-#	pass
+#	return false;
+#func only_filename() -> bool:
+#	return false;
+#
 #func compile_rules() -> void:
 #	pass
 #func search_all(text: String, array: Array[RegExMatch]) -> void:
 #	pass
+
+func only_filename() -> bool:
+	return false;
 
 func is_covered(file_name: String) -> bool:
 	return file_name.get_extension() == "gd";
@@ -27,5 +33,5 @@ func is_covered(file_name: String) -> bool:
 func compile_rules() -> void:
 	SpaghettiLogger.warning("no compile_rules method defined for {0}",[self.get_script().resource_path]);
 
-func search_all(text: String, array: Array[RegExMatch]) -> void:
+func search_all(text: String, file_name: String, array: Array[RegExMatch]) -> void:
 	SpaghettiLogger.error("no search_all method defined for {0}",[self.get_script().resource_path]);

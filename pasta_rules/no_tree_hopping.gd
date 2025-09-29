@@ -19,10 +19,10 @@ var compiled_no_quote: RegEx;
 var max_allowed_depth: int = 2;
 
 func compile_rules() -> void:
-    self.compiled = RegEx.create_from_string("\\$\"([^\"]+)\"");
-    self.compiled_no_quote = RegEx.create_from_string("\\$([^\\.\\:\"\\%]+)[\\.\n\\\\]");
+	self.compiled = RegEx.create_from_string("\\$\"([^\"]+)\"");
+	self.compiled_no_quote = RegEx.create_from_string("\\$([^\\.\\:\"\\%]+)[\\.\n\\\\]");
 	
-func search_all(text: String, array: Array[RegExMatch]) -> void:
+func search_all(text: String, file_name: String, array: Array[RegExMatch]) -> void:
 	for m: RegExMatch in self.compiled.search_all(text):
 		if check_hopping(m): array.append(m);
 	for m: RegExMatch in self.compiled_no_quote.search_all(text):

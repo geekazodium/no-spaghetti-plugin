@@ -11,6 +11,6 @@ func is_covered(file_name: String) -> bool:
 func compile_rules() -> void:
 	self.compiled = RegEx.create_from_string("\\[sub_resource type=\"GDScript\" id=\".*\"\\]");
 	
-func search_all(text: String, array: Array[RegExMatch]) -> void:
+func search_all(text: String, file_name: String, array: Array[RegExMatch]) -> void:
 	for m: RegExMatch in self.compiled.search_all(text):
 		array.append(m);

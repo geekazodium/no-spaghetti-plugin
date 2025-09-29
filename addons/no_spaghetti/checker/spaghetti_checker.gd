@@ -102,23 +102,24 @@ func check_folder(directory: String, layers: int = 64, ignores: PackedStringArra
 	return matches;
 
 func check_file(file_path_string: String) -> int:
-	var file: FileAccess = FileAccess.open(file_path_string,FileAccess.READ);
-	
-	var text: String;
+	var text: String = "";
 	var parsed: bool = false;
 	
 	var results: Array[RegExMatch] = [];
 	for pasta in self.pastas:
 		if !pasta.is_covered(file_path_string):
 			continue;
-		if !parsed:
+		if !parsed && !pasta.only_filename():
+			var file: FileAccess = FileAccess.open(file_path_string,FileAccess.READ);
 			text = file.get_as_text();
+			file.close();
 			parsed = true;
-		pasta.search_all(text, results);
+		var read_text = "" if pasta.only_filename() else text; 
+		pasta.search_all(read_text, file_path_string, results);
 	
 	if results.size() > 0:
-		self.lint_warnings_generated.emit(file.get_path(), text, results);
-	file.close();
+		self.lint_warnings_generated.emit(file_path_string, text, results);
+
 	return results.size();
 
 ## check if a file path matches any of the ignored file paths in ignored array
