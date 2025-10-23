@@ -38,12 +38,12 @@ func compile_rules() -> void:
 
 ## search all of a file, and add matching results to the array that is
 ## passed in.
-func search_all(text: String, array: Array[RegExMatch]) -> void:
+func search_all(text: String, file_name: String, array: Array[RegExMatch]) -> void:
 	pass
 ```
 currently, it's recommended that you only use regexes and simple logic
-to check for code style errors, the compile method is always run before.
-checks, assign regex fields in that method.
+to check for code style errors, the compile method is always run before
+checks, try to only assign regex fields in that method.
 
 ## License
 
