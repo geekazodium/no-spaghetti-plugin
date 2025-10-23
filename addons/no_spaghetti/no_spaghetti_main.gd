@@ -47,4 +47,4 @@ func _exit_tree() -> void:
 	self.main_dock.queue_free();
 	
 	SpaghettiLogger.debug("NoSpaghetti has been disabled");
-	self.instancce = null;
+	self.instance = null;
