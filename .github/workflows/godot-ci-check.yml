@@ -66,6 +66,6 @@ jobs:
         with:
           name: results-min.txt
           path: "./results/warnings_compact.txt"
-      - name: #invoke wget
+      - name: Echo Warnings
         run: |
-          if [ -f "./results/warnings_compact.txt" ]; then echo cat ./results/warnings_compact.txt && wget; fi
+          if [ -f "./results/warnings_compact.txt" ]; then echo "$(<./results/warnings_compact.txt)" && wget; fi
