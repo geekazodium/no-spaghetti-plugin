@@ -45,7 +45,7 @@ jobs:
         run : |
           wget -O godot.zip "https://github.com/godotengine/godot-builds/releases/download/$GODOT_VERSION/Godot_v${GODOT_VERSION}_linux.x86_64.zip"
           unzip godot.zip
-          cp "./Godot_v${GODOT_VERSION}_linux.x86_64" "$GODOT_DL_PATH"
+          cp "./Godot_v${GODOT_VERSION}_linux.x86_64" "${PROJECT_PATH}$GODOT_DL_PATH"
       - name: Reconfigure
         run: |
           cd $PROJECT_PATH
@@ -57,6 +57,8 @@ jobs:
           cd $PROJECT_PATH
           eval "$GODOT_DL_PATH" --args "--import --headless"
           eval "$GODOT_DL_PATH" --args "run --headless --quit"
+      - name: Copy Results
+        run: |
           mkdir ./results/
           if [ -f "$PROJECT_PATH/warnings_compact.txt" ]; then cp "$PROJECT_PATH/warnings_compact.txt" "./results/warnings_compact.txt"; fi
       - name: Upload Artifact
@@ -66,4 +68,4 @@ jobs:
           path: "./results/warnings_compact.txt"
       - name: #invoke wget
         run: |
-          if [ -f "./results/warnings_compact.txt" ]; then echo "rules violation found" && wget; fi
+          if [ -f "./results/warnings_compact.txt" ]; then echo cat ./results/warnings_compact.txt && wget; fi
