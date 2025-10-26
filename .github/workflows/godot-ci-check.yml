@@ -68,4 +68,4 @@ jobs:
           path: "./results/warnings_compact.txt"
       - name: #invoke wget
         run: |
-          if [ -f "./results/warnings_compact.txt" ]; then (cat ./results/warnings_compact.txt | echo) && wget; fi
+          if [ -f "./results/warnings_compact.txt" ]; then (echo ./results/warnings_compact.txt) && wget; fi
