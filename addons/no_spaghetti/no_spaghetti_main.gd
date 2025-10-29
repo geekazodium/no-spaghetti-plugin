@@ -13,7 +13,7 @@ var spaghetti_checker: SpaghettiChecker;
 ## initialize plugin
 func _enter_tree() -> void:
 	SpaghettiLogger.debug("NoSpaghetti has been enabled");
-	SpaghettiLogger.rich("thank you for using [color=Orange]NoSpaghetti [color=White]0.3-unstable");
+	SpaghettiLogger.rich("thank you for using [color=Orange]NoSpaghetti [color=White]" + self.get_plugin_version());
 	
 	SpaghettiLogger.debug("instantiating custom settings...");
 	SpaghettiSettings.register_properties();
